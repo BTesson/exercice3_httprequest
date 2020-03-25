@@ -1,0 +1,64 @@
+body{
+    margin: 0;
+}
+
+table {
+    table-layout: fixed;
+    width: auto;
+    border-collapse: collapse;
+    text-align: center;
+    border: 3px solid black;
+}
+  
+thead{
+    background-color: sandybrown;
+    border-bottom: 3px solid black;
+}
+
+th{
+    border: 1px solid black;
+    padding: 10px;
+}
+
+td{
+    border-width: 1px 1px 1px 1px;
+    border-style: solid;
+    border-color: black;
+    height: 30;
+    width: auto;
+    padding: 5px;
+}
+
+tbody tr:nth-child(even){
+    background-color: sandybrown;
+}
+
+.button-duplicate{
+    border-radius: 5px;
+    border-color: dodgerblue;
+    background-color: dodgerblue;
+    color: ivory;
+}
+
+.button-delete{
+    border-radius: 5px;
+    border-color: crimson;
+    background-color: crimson;
+    color: ivory;
+}
+
+#th-monthly-salary{
+    display: flex;
+    flex-direction: row;
+    border: 0px;
+}
+
+#th-monthly-salary p{
+    margin: 5px;
+}
+
+#button-order-monthly-salary{
+    border-radius: 10px;
+    border-color: ivory;
+    background-color: ivory;
+}
