@@ -28,8 +28,8 @@ request.onreadystatechange = function(){
         if(reponse.status == "success"){
             data = reponse.data;  
             addData();      
-        } else{
-            //info indispo mess erreur
+        } else if(reponse.status == "error"){
+            errorLoading("Erreur");
         }
     }
 }
@@ -58,7 +58,7 @@ function addValue(elemt, value){
 
     addTd(elemt, "employee-name", document.createTextNode(value.employee_name));
 
-    let firstChar = value.employee_name.charAt(1).toLowerCase();
+    let firstChar = value.employee_name.charAt(0).toLowerCase();
     let lastname = (value.employee_name.split(' '))[1].toLowerCase();
     let email = firstChar +'.'+ lastname + "@email.com";
     addTd(elemt, "employee-email", document.createTextNode(email));
@@ -88,7 +88,8 @@ function addValue(elemt, value){
     buttonDelete.className = 'button-delete';
     buttonDelete.addEventListener('click', function(){  
         data.splice(data.indexOf(value), 1);
-        this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+        row = this.parentNode.parentNode;
+        tableEmpBody.removeChild(row);
         tableEmpBody.deleteRow(-1);
         addFooterTable();
     });
@@ -166,3 +167,13 @@ function addTd(parentElem, classname, elemtToAdd){
     parentElem.appendChild(td);
     td.appendChild(elemtToAdd);
  }
+
+ function errorLoading(mess){
+    let newTr = document.createElement('tr');           
+    tableEmpBody.appendChild(newTr);
+    let newTd = document.createElement('td');
+    newTr.appendChild(newTd);
+    newTd.appendChild(document.createTextNode(mess));
+    newTd.colSpan = 7;
+ }
+ 
